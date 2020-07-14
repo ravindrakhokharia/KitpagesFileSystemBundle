@@ -18,10 +18,9 @@ class FactoryConfiguration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-
-        $treeBuilder
-            ->root('kitpages_file_system')
+        $treeBuilder = new TreeBuilder('kitpages_file_system');
+        $rootNode = $treeBuilder->getRootNode();
+        $rootNode
                 ->ignoreExtraKeys()
                 ->fixXmlConfig('factory', 'factories')
                 ->children()
@@ -29,7 +28,6 @@ class FactoryConfiguration implements ConfigurationInterface
                         ->prototype('scalar')->end()
                     ->end()
                 ->end()
-            ->end()
         ;
 
         return $treeBuilder;
